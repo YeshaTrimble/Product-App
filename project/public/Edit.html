@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <style>
+.center {
+    margin-left: -100px;
+    margin-right: auto;
+    width: 70%;
+    
+}
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+</head>
+
+<body >
+    <div class="container" >
+        
+      <form name = "editform" class = "center">
+      <table class ="table"  STYLE="background-color:#72A4D2;">
+       
+        <tbody>
+         <tr>   
+        <td ><label>Enter ProdID</label><input list="prodlist"name="ip" ng-model="prod" required
+              ng-keypress="$event.keyCode == 13  && !editform.ip.$invalid? edit(prod) : null" >
+			<datalist id="prodlist">
+	<option ng-repeat="prodlist in prodlist" value={{prodlist.prod_id}} >
+	                </datalist>
+          
+          <span class="error" ng-show="editform.ip.$error.required">
+            Product Name is Required!</span>
+        </td>
+             
+         </tr>  
+        
+            <tr>
+                 
+                <td>Product Id : {{prodlist.prod_id}}
+               &nbsp;&nbsp; &nbsp;&nbsp; Quantity: &nbsp; &nbsp;{{prodlist.qty}}</td>
+             </tr>
+
+             <tr>
+                
+       
+                <tr>  <td  >Product Name <br> &nbsp; &nbsp;
+                     <input type = "text" name = "desc"
+                      ng-model = "prodlist.desc" STYLE="background-color :orange"
+                     required ng-keypress="$event.keyCode == 13 && !editform.desc.$invalid? update() : null" > 
+                    
+                     <span ng-show="editform.desc.$dirty && editform.desc.$invalid">
+                    <span class="error" ng-show="editform.desc.$error.required">
+                           Cannot leave Blank!</span>
+                 </td>
+                </tr> 
+            </tr>
+
+             <tr> 
+            <td> Cost Price</br> &nbsp;&nbsp;
+            {{prodlist.cp}}
+           </tr>
+
+               <tr>  <td>Selling Price<br> &nbsp;&nbsp;
+                  <input type = "number" name = "sel"
+                  ng-model= "prodlist.sp" STYLE="background-color :orange"
+                  required ng-keypress="$event.keyCode == 13 ? update()  : null">
+                 </td> 
+     
+                 
+            </tr>
+           
+        </tbody>
+        </table>  
+     
+</form>
+
+    </div>
+
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src = "src/controller.js"></script>
+</body>
+</html>

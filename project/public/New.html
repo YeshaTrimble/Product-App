@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<body >
+
+ <div class="container">
+<h1> Add New </h1>
+<form name = "new" ng-submit="add()">
+
+<label>   Prod_id:</label> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<input type="text" id="id" ng-model="prod.prod_id"  required> <br/>
+<span class="error" ng-show="new.id.$error.required">
+            Product Name is Required!</span>
+
+<label> Product Name:</label> 
+<input type="text" id="desc" ng-model="prod.desc" > <br/>
+
+<label> Quantity:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="number" id="qty" ng-model="prod.qty" > <br/>
+
+
+
+
+<label> Cost Price:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="number" id="cp" ng-model="prod.cp" required><br/>
+
+<label>selling Price:</label> &nbsp;&nbsp;&nbsp;
+<input type="number" id="sp" ng-model="prod.sp" required min = "{{prod.cp}}" ><br/>
+
+<span ng-show="new.sp.$dirty && new.sp.$invalid">
+    <span class="error" ng-show="new.sp.$error.required || new.sp.$error.min">
+       Selling Price cannot be blank or less than Cost Price</span>
+   
+
+      <input type="submit" value="Submit Form">
+
+  </form>
+</div>
+</body>
+</html>
+
